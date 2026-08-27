@@ -63,7 +63,8 @@ export function Navbar() {
         <div>
           <button
             type="button"
-            aria-label="Einstellungen öffnen"
+            data-settings-toggle
+            aria-label={settingsOpen ? "Einstellungen schließen" : "Einstellungen öffnen"}
             aria-expanded={settingsOpen}
             onClick={() => setSettingsOpen((v) => !v)}
             className="flex h-11 w-11 items-center justify-center rounded-xl text-lg transition-colors hover:bg-[var(--glass-bg)] cursor-pointer"

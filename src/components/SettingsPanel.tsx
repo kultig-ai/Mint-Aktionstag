@@ -57,7 +57,11 @@ export function SettingsPanel({ open, onClose }: { open: boolean; onClose: () =>
       if (e.key === "Escape") onClose();
     };
     const onClick = (e: MouseEvent) => {
-      if (panelRef.current && !panelRef.current.contains(e.target as Node)) onClose();
+      const target = e.target as Element;
+      // Klicks auf den Zahnrad-Button ignorieren – der togglet selbst
+      // (sonst würde das Panel hier geschlossen und vom Klick sofort wieder geöffnet).
+      if (target.closest("[data-settings-toggle]")) return;
+      if (panelRef.current && !panelRef.current.contains(target)) onClose();
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onClick);

@@ -15,10 +15,13 @@ import { COURSE_STEPS, useProgress } from "@/lib/progress";
  * P: Scroll-Fortschritt 0..1, restliche Arrays: Werte an diesen Stützstellen.
  * Die Axt wird um ihren Schwerpunkt animiert, der Wurfarm rotiert um die Schulter.
  */
+// Die Axt-Position beschreibt den Schwerpunkt. In den Halte-Phasen sind die
+// Werte so gewählt, dass die Hand (Armende) das untere GRIFFENDE umfasst –
+// das Griffende liegt bei Rotation r ca. 92px vom Schwerpunkt entfernt.
 const P = [0, 0.18, 0.38, 0.52, 0.62, 0.85, 1];
-const AXE_X = [150, 150, 100, 185, 300, 520, 655];
-const AXE_Y = [235, 220, 95, 165, 140, 125, 162];
-const AXE_R = [0, -10, -130, -30, 80, 260, 345];
+const AXE_X = [148, 142, 20, 150, 300, 520, 655];
+const AXE_Y = [140, 132, 98, 90, 130, 120, 162];
+const AXE_R = [0, -10, -60, -20, 80, 260, 345];
 const ARM_R = [0, -15, -170, -95, -60, -60, -60];
 
 /** Segmente, in denen die einzelnen Erklärtexte sichtbar sind. */
@@ -150,18 +153,19 @@ function AnimatedStory() {
     <div ref={containerRef} className="relative" style={{ height: "420vh" }}>
       <div className="sticky top-0 flex h-screen flex-col items-center justify-center px-4">
         <GlassCard strong className="w-full max-w-5xl overflow-hidden p-4 sm:p-6">
-          <div className="relative">
-            <svg viewBox="0 0 800 450" className="w-full" aria-hidden>
-              <SceneBase idPrefix="story" />
-              <Arm rotate={armR} />
-              <Axe idPrefix="story" x={axeX} y={axeY} rotate={axeR} />
-            </svg>
-            {/* Erklärtexte */}
+          <svg viewBox="0 0 800 450" className="w-full" aria-hidden>
+            <SceneBase idPrefix="story" />
+            <Arm rotate={armR} />
+            <Axe idPrefix="story" x={axeX} y={axeY} rotate={axeR} />
+          </svg>
+          {/* Erklärtexte: eigener Bereich UNTER der Szene, damit sie die
+              Animation auf kleinen Bildschirmen nicht verdecken. */}
+          <div className="relative mt-3 min-h-36 sm:min-h-28">
             {throwSteps.map((step, i) => (
               <motion.div
                 key={step.title}
                 style={{ opacity: captionOpacities[i] }}
-                className="pointer-events-none absolute inset-x-0 bottom-2 flex justify-center"
+                className="pointer-events-none absolute inset-x-0 top-0 flex justify-center"
               >
                 <div className="glass-strong max-w-md rounded-2xl px-5 py-3 text-center">
                   <p className="text-sm font-bold text-accent">

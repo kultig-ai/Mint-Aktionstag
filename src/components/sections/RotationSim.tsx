@@ -77,12 +77,17 @@ export function RotationSim() {
   const targetX = 660;
   const targetY = 120;
   const totalAngle = rotations * 360;
+  // Rotation beim Auftreffen: Bei genau einer Umdrehung (ideal) zeigt die
+  // Schneide wieder nach vorn zur Scheibe (0°). Zu nah → negativ (Griff/Kopf
+  // voran), zu weit → positiv (überdreht).
+  const impactRotation = totalAngle - 360;
 
-  // Geister-Äxte entlang der Flugbahn
+  // Geister-Äxte entlang der Flugbahn: starten beim Abwurf senkrecht
+  // (Schneide oben, -90°) und drehen bis zur Auftreff-Rotation.
   const ghosts = [0.25, 0.5, 0.75].map((f) => ({
     x: handX + (targetX - 26 - handX) * f,
     y: handY - Math.sin(f * Math.PI) * 34 + (targetY - handY) * f,
-    r: -90 + totalAngle * f,
+    r: -90 + (impactRotation + 90) * f,
     opacity: 0.25 + f * 0.2,
   }));
 
@@ -160,7 +165,7 @@ export function RotationSim() {
             {/* Axt beim Auftreffen */}
             <g
               style={{
-                transform: `translate(${targetX + 14}px, ${targetY + 8}px) rotate(${-90 + totalAngle}deg)`,
+                transform: `translate(${targetX + 14}px, ${targetY + 8}px) rotate(${impactRotation}deg)`,
                 transformOrigin: "0px 0px",
                 transformBox: "view-box",
                 transition: "transform 0.15s",

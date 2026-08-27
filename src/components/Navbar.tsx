@@ -58,7 +58,9 @@ export function Navbar() {
           <span className="text-xs font-semibold tabular-nums text-muted">{percent}%</span>
         </div>
 
-        <div className="relative">
+        {/* Kein position:relative – das Panel ankert an der gesamten Nav-Leiste,
+            damit es auf schmalen Bildschirmen nicht links aus dem Viewport ragt. */}
+        <div>
           <button
             type="button"
             aria-label="Einstellungen öffnen"

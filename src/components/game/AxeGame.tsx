@@ -558,7 +558,9 @@ export function AxeGame() {
   }, [finishThrow]);
 
   return (
-    <div>
+    // select-none: verhindert, dass beim schnellen Klicken/Ziehen im Spiel
+    // Texte markiert (blau hinterlegt) werden.
+    <div className="select-none">
       {/* HUD */}
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <div className="glass rounded-2xl px-4 py-2 text-sm font-semibold">

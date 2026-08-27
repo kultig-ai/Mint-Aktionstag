@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// TODO: Beim Livegang durch die echte Domain ersetzen.
-const SITE_URL = "https://axtwerfen-lernen.example.com";
+// TODO: Bei eigener Domain hier anpassen.
+const SITE_URL = "https://kultig-ai.github.io/Mint-Aktionstag";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

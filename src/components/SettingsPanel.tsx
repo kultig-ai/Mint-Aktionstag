@@ -75,7 +75,7 @@ export function SettingsPanel({ open, onClose }: { open: boolean; onClose: () =>
       role="dialog"
       aria-modal="false"
       aria-label="Einstellungen"
-      className="glass-strong absolute right-0 top-full z-50 mt-3 max-h-[calc(100vh-7rem)] w-80 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-3xl p-5"
+      className="glass-solid absolute right-0 top-full z-50 mt-3 max-h-[calc(100vh-7rem)] w-80 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-3xl p-5"
     >
       <h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-muted">Einstellungen</h2>
 

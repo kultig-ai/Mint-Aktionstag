@@ -18,6 +18,7 @@
   --danger: #b3362a;
   --glass-bg: rgba(255, 255, 255, 0.55);
   --glass-bg-strong: rgba(255, 255, 255, 0.75);
+  --glass-bg-solid: rgba(252, 250, 247, 0.94);
   --glass-border: rgba(255, 255, 255, 0.65);
   --glass-shine: rgba(255, 255, 255, 0.9);
   --glass-shadow: 0 8px 32px rgba(60, 42, 24, 0.12);
@@ -40,6 +41,7 @@
   --danger: #f87171;
   --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-bg-strong: rgba(255, 255, 255, 0.1);
+  --glass-bg-solid: rgba(29, 24, 19, 0.96);
   --glass-border: rgba(255, 255, 255, 0.14);
   --glass-shine: rgba(255, 255, 255, 0.25);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
@@ -105,9 +107,21 @@ html.large-text {
     position: relative;
   }
 
+  /* Fast deckende Variante für schwebende Overlays (Einstellungen, Menü,
+     Toasts): dahinterliegender Inhalt scheint nicht mehr durch. */
+  .glass-solid {
+    background: var(--glass-bg-solid);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(24px) saturate(1.5);
+    -webkit-backdrop-filter: blur(24px) saturate(1.5);
+    position: relative;
+  }
+
   /* Subtile Lichtkante an der Oberseite der Glasflächen */
   .glass::before,
-  .glass-strong::before {
+  .glass-strong::before,
+  .glass-solid::before {
     content: "";
     position: absolute;
     inset: 0 0 auto 0;

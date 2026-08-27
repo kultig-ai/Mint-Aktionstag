@@ -26,7 +26,7 @@ export function AchievementToast() {
             initial={motionAllowed ? { opacity: 0, y: 24, scale: 0.95 } : { opacity: 0 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12 }}
-            className="glass-strong flex items-center gap-3 rounded-2xl px-5 py-4 shadow-xl"
+            className="glass-solid flex items-center gap-3 rounded-2xl px-5 py-4 shadow-xl"
           >
             <span aria-hidden className="text-3xl">{achievement.icon}</span>
             <div>

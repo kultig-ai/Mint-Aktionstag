@@ -85,7 +85,7 @@ export function Navbar() {
 
         {/* Mobiles Menü */}
         {menuOpen && (
-          <div className="glass-strong absolute inset-x-0 top-full mt-2 rounded-2xl p-2 md:hidden">
+          <div className="glass-solid absolute inset-x-0 top-full mt-2 rounded-2xl p-2 md:hidden">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
